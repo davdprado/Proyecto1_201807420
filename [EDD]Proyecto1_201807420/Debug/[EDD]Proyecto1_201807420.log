@@ -1,2 +1,7 @@
-﻿  [EDD]Proyecto1_201807420.cpp
-  [EDD]Proyecto1_201807420.vcxproj -> C:\Users\Co\Documents\GitHub\Proyecto1_201807420\[EDD]Proyecto1_201807420\Debug\[EDD]Proyecto1_201807420.exe
+﻿  Usuario.cpp
+  [EDD]Proyecto1_201807420.cpp
+C:\Users\Co\Documents\GitHub\Proyecto1_201807420\[EDD]Proyecto1_201807420\[EDD]Proyecto1_201807420.cpp(5,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
+  Generando código...
+[EDD]Proyecto1_201807420.obj : error LNK2005: ya se definió "public: void __thiscall Usuario::imprimirUsuario(void)" (?imprimirUsuario@Usuario@@QAEXXZ) en Usuario.obj
+[EDD]Proyecto1_201807420.obj : error LNK2019: símbolo externo "public: __thiscall Usuario::Usuario(int,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (??0Usuario@@QAE@HV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@00@Z) sin resolver al que se hace referencia en la función _main
+C:\Users\Co\Documents\GitHub\Proyecto1_201807420\[EDD]Proyecto1_201807420\Debug\[EDD]Proyecto1_201807420.exe : fatal error LNK1120: 1 externos sin resolver

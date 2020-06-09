@@ -147,7 +147,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Usuario.cpp" />
     <ClCompile Include="[EDD]Proyecto1_201807420.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Usuario.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
