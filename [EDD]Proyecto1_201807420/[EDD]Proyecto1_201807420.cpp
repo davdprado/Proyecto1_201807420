@@ -2,7 +2,7 @@
 //
 
 #include <iostream>
-#include "Usuario.h";
+#include"Nodo.h"
 using namespace std;
 int main()
 {
@@ -13,8 +13,6 @@ int main()
     cin >> user;
     cout << "Password: ";
     cin >> pass;
-    Usuario user1 = Usuario(1, "Beto", "algo", "Minombre");
-    user1.imprimirUsuario();
 
 }
 
