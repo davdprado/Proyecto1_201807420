@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include"Nodo.h"
+#include "Matriz.h"
 using namespace std;
 int main()
 {
@@ -13,6 +14,11 @@ int main()
     cin >> user;
     cout << "Password: ";
     cin >> pass;
+    Matriz *miObjeto = new Matriz();
+    miObjeto->InsertarElemento("mario", 1, "max", "Guatemala");
+    miObjeto->InsertarElemento("Sisi", 1, "hp", "Peten");
+    miObjeto->InsertarElemento("Alf", 1, "hp", "Zacapa");
+    miObjeto->InsertarElemento("Sxc", 1, "Safo", "Peten");
 
 }
 

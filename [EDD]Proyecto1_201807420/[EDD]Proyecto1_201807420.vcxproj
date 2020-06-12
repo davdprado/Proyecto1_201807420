@@ -147,7 +147,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Matriz.cpp" />
     <ClCompile Include="Nodo.cpp" />
     <ClCompile Include="[EDD]Proyecto1_201807420.cpp" />
   </ItemGroup>
