@@ -16,9 +16,14 @@ int main()
     cin >> pass;
     Matriz *miObjeto = new Matriz();
     miObjeto->InsertarElemento("mario", 1, "max", "Guatemala");
-    miObjeto->InsertarElemento("Sisi", 1, "hp", "Peten");
-    miObjeto->InsertarElemento("Alf", 1, "hp", "Zacapa");
-    miObjeto->InsertarElemento("Sxc", 1, "Safo", "Peten");
+    miObjeto->InsertarElemento("andres", 7, "hp", "Guatemala");
+    miObjeto->InsertarElemento("susan", 2, "hp", "Peten");
+    miObjeto->InsertarElemento("susel", 3, "hp", "Zacapa");
+    miObjeto->InsertarElemento("roxana", 4, "Safo", "Zacapa");
+    miObjeto->InsertarElemento("andrea", 5, "Safo", "Zacapa");
+    miObjeto->InsertarElemento("sebas", 6, "Safo", "Zacapa");
+    miObjeto->InsertarElemento("willy", 8, "max", "Zacapa");
+    miObjeto->InsertarElemento("mario", 1, "Safo", "Guatemala");
 
 }
 
