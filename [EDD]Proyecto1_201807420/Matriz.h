@@ -7,9 +7,9 @@ class Matriz
 public:
 	Nodo* cabezera;
 	Matriz(){
-		cabezera = new Nodo("admin", -1);
+		cabezera = new Nodo("admin", -1,"admin");
 	}
-	void InsertarElemento(string usuario, int numero, string empresa, string departamento);
+	void InsertarElemento(string usuario, int numero,string passW, string empresa, string departamento);
 	//metodos para ingresar cabeceras
 	Nodo* crearEmpr(string );
 	Nodo* crearDep(string );
@@ -19,14 +19,13 @@ public:
 
 	bool verificarEmpresa(string, Nodo*,Nodo*);
 	bool verificarDepartamento(string, Nodo*, Nodo*);
-
-
-
-
 };
+
+
+
 Nodo* Matriz::crearEmpr(string empresa) {
 	Nodo* emp;
-	emp = new Nodo(empresa, -1);
+	emp = new Nodo(empresa, -1,"");
 
 	Nodo* aux = cabezera;
 	while (aux->down != nullptr)
@@ -37,7 +36,7 @@ Nodo* Matriz::crearEmpr(string empresa) {
 }
 Nodo* Matriz::crearDep(string departamento) {
 	Nodo* depa;
-	depa = new Nodo(departamento, -1);
+	depa = new Nodo(departamento, -1,"");
 	Nodo* aux = cabezera;
 	while (aux->nextt != nullptr)
 	{
@@ -73,11 +72,11 @@ Nodo* Matriz::buscarEmp(string empresa, Nodo* inicio) {
 	return nullptr;
 
 }
-void Matriz::InsertarElemento(string usuario, int numero, string empresa, string departamento) {
+void Matriz::InsertarElemento(string usuario, int numero,string passW, string empresa, string departamento) {
 	Nodo* Nusuario;
 	Nodo* Nempresa;
 	Nodo* Ndepartamento;
-	Nusuario = new Nodo(usuario, numero);
+	Nusuario = new Nodo(usuario, numero,passW);
 
 	Ndepartamento = buscarDep(departamento, cabezera);
 	Nempresa = buscarEmp(empresa, cabezera);
@@ -113,7 +112,7 @@ void Matriz::InsertarElemento(string usuario, int numero, string empresa, string
 		do
 		{
 			Nauxiliar = Nauxiliar->down;
-			if (verificarEmpresa(empresa, Nauxiliar, Nusuario)) {
+			if (!verificarEmpresa(empresa, Nauxiliar, Nusuario)) {
 				Nodo* auxEmpr = Nauxiliar->previous;
 				while (auxEmpr->previous!=nullptr)
 				{
@@ -137,7 +136,7 @@ void Matriz::InsertarElemento(string usuario, int numero, string empresa, string
 			}
 		} while (Nauxiliar->down!=nullptr && Nusuario->up==nullptr);
 
-		if (Nusuario->up!=nullptr && Nusuario->front==nullptr)
+		if (Nusuario->up==nullptr && Nusuario->front==nullptr)
 		{
 			Nauxiliar->down = Nusuario;
 			Nusuario->up = Nauxiliar;

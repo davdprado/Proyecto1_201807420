@@ -11,8 +11,9 @@ public:
 	Nodo* front;
 	Nodo* back;
 	string nombre;
+	string pass;
 	int id;
-	Nodo(string name, int dat) {
+	Nodo(string name, int dat,string dato) {
 		nextt = nullptr;
 		previous = nullptr;
 		up = nullptr;
@@ -21,7 +22,7 @@ public:
 		back = nullptr;
 		nombre = name;
 		id = dat;
-
+		pass = dato;
 	}
 
 };
