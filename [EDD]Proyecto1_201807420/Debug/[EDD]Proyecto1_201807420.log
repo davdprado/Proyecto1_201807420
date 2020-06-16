@@ -1,4 +1,4 @@
 ﻿  [EDD]Proyecto1_201807420.cpp
-C:\Users\Co\Documents\GitHub\Proyecto1_201807420\[EDD]Proyecto1_201807420\[EDD]Proyecto1_201807420.cpp(67,9): warning C4101: 'op': variable local sin referencia
-C:\Users\Co\Documents\GitHub\Proyecto1_201807420\[EDD]Proyecto1_201807420\[EDD]Proyecto1_201807420.cpp(32): warning C4715: 'buscarCoordenadas': no todas las rutas de acceso de control devuelven un valor
+C:\Users\Co\Documents\GitHub\Proyecto1_201807420\[EDD]Proyecto1_201807420\[EDD]Proyecto1_201807420.cpp(185,9): warning C4101: 'op': variable local sin referencia
+C:\Users\Co\Documents\GitHub\Proyecto1_201807420\[EDD]Proyecto1_201807420\[EDD]Proyecto1_201807420.cpp(33): warning C4715: 'buscarCoordenadas': no todas las rutas de acceso de control devuelven un valor
   [EDD]Proyecto1_201807420.vcxproj -> C:\Users\Co\Documents\GitHub\Proyecto1_201807420\[EDD]Proyecto1_201807420\Debug\[EDD]Proyecto1_201807420.exe
