@@ -2,8 +2,6 @@
 class Activo
 {
 public:
-	Activo();
-	~Activo();
 
 private:
 

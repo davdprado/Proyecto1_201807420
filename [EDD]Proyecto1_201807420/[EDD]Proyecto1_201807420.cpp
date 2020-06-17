@@ -32,18 +32,18 @@ Nodo* buscarCoordenadas(Nodo* cabeza, string empresa, string departamento) {
     }
 }
 
-bool ExisteCabezera(Nodo* cabeza,string depart,string empre) {
+bool ExisteCabezera(Nodo* cabeza,string cabe) {
     Nodo* otr = cabeza;
     while (cabeza!=nullptr)
     {
-        if (cabeza->nombre==depart)
+        if (cabeza->nombre==cabe)
             return true;
         else
             cabeza = cabeza->nextt;
     }
     while (otr!=nullptr)
     {
-        if (otr->nombre == empre)
+        if (otr->nombre == cabe)
             return true;
         else
             otr=otr->down;
@@ -75,10 +75,10 @@ void menuAdministrador(Nodo* cabeza, Matriz* matrizD) {
             cout << "%%%%%%%%%%%%%% Ingresar Usuario nuevo %%%%%%%%%%%"<<endl;
             cout << "Ingrese Departamento: ";
             cin >> dp;
-            dpa = ExisteCabezera(cabeza, dp, empre);
+            dpa = ExisteCabezera(cabeza, dp);
             cout << "Ingrese Empresa: ";
             cin >> empre;
-            empr = ExisteCabezera(cabeza, dp, empre);
+            empr = ExisteCabezera(cabeza,empre);
             cout << "Ingrese Usuario: ";
             cin >> us;
             cout << "Ingrese Contrasenia: ";
@@ -144,10 +144,10 @@ void menuUsuario(Nodo* cabezera,string nuser,string departamento,string empresa,
 
 void Login(Nodo* cabeza, string usuario, string contra, string empresa, string departamento,Matriz* matrizD) {
     Nodo* punto = buscarCoordenadas(cabeza, empresa, departamento);
-    cout<<"se encontro";
     if (usuario=="admin" && contra=="admin")
     {
         menuAdministrador(cabeza,matrizD);
+        return;
     }
     if (punto->back==nullptr)
     {
@@ -155,10 +155,12 @@ void Login(Nodo* cabeza, string usuario, string contra, string empresa, string d
         {
             cout << "el usuario existe bienvenido";
             menuUsuario(cabeza, usuario, departamento, empresa,matrizD);
+            return;
         }
         else
         {
             cout << "No existe en esta empresa y departamento";
+            return;
         }
     }
     else
@@ -170,7 +172,7 @@ void Login(Nodo* cabeza, string usuario, string contra, string empresa, string d
             {
                 cout << "el usuario existe bienvenido";
                 menuUsuario(cabeza, usuario, departamento, empresa,matrizD);
-                break;
+                return;
             }
             aux = aux->back;
         }
@@ -181,9 +183,10 @@ void Login(Nodo* cabeza, string usuario, string contra, string empresa, string d
 
 int main()
 {
-    string usl, password,departamento,empresa;
+    
     int op;
-    bool seguir = true;
+    string seguir;
+    bool dp, inc;
     Matriz* miObjeto = new Matriz();
     miObjeto->InsertarElemento("mario", idUsuarios, "1234", "max", "Guatemala");
     idUsuarios++;
@@ -204,6 +207,9 @@ int main()
     miObjeto->InsertarElemento("lawey", idUsuarios, "0000", "hp", "Peten");
     idUsuarios++;
     Nodo* Inicio = miObjeto->cabezera;
+    do {
+        string usl, password, departamento, empresa;
+        system("cls");
         cout << "#################### L O G I N ########################" << endl;
         cout << "Usuario: ";
         cin >> usl;
@@ -211,9 +217,27 @@ int main()
         cin >> password;
         cout << "Departamento: ";
         cin >> departamento;
+        dp = ExisteCabezera(Inicio, departamento);
         cout << "Empresa: ";
         cin >> empresa;
-        Login(Inicio, usl, password, empresa, departamento,miObjeto);
+        inc = ExisteCabezera(Inicio,empresa);
+        if (dp&&inc)
+        {
+            Login(Inicio, usl, password, empresa, departamento, miObjeto);
+            cout << "Seguir(s/n): ";
+            cin >> seguir;
+        }
+        else if (usl=="admin"&&password=="admin")
+        {
+            Login(Inicio, usl, password, empresa, departamento, miObjeto);
+            cout << "Seguir(s/n): ";
+            cin >> seguir;
+        }
+        else {
+            cout << "La Empresa o Departamento no existe;";
+        }
+        
+    } while (seguir == "s");
 
 
     //imprime matriz
