@@ -1,5 +1,6 @@
 #pragma once
 #include<iostream>
+#include"ArbolAVLAc.h"
 using namespace std;
 class Nodo
 {
@@ -9,6 +10,7 @@ public:
 	Nodo* up;
 	Nodo* down;
 	Nodo* front;
+	ArbolA* Activos;
 	Nodo* back;
 	string nombre;
 	string pass;
@@ -19,6 +21,7 @@ public:
 		up = nullptr;
 		down = nullptr;
 		front = nullptr;
+		Activos = nullptr;
 		back = nullptr;
 		nombre = name;
 		id = dat;

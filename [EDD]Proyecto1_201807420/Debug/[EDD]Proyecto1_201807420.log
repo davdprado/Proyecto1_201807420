@@ -1,4 +1,11 @@
-﻿  [EDD]Proyecto1_201807420.cpp
-C:\Users\Co\Documents\GitHub\Proyecto1_201807420\[EDD]Proyecto1_201807420\[EDD]Proyecto1_201807420.cpp(187,9): warning C4101: 'op': variable local sin referencia
-C:\Users\Co\Documents\GitHub\Proyecto1_201807420\[EDD]Proyecto1_201807420\[EDD]Proyecto1_201807420.cpp(33): warning C4715: 'buscarCoordenadas': no todas las rutas de acceso de control devuelven un valor
-  [EDD]Proyecto1_201807420.vcxproj -> C:\Users\Co\Documents\GitHub\Proyecto1_201807420\[EDD]Proyecto1_201807420\Debug\[EDD]Proyecto1_201807420.exe
+﻿[EDD]Proyecto1_201807420.obj : error LNK2005: ya se definió "public: void __thiscall ArbolA::Crear(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?Crear@ArbolA@@QAEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@00@Z) en Nodo.obj
+[EDD]Proyecto1_201807420.obj : error LNK2005: ya se definió "public: void __thiscall ArbolA::EnOrden(class NodoActivo *)" (?EnOrden@ArbolA@@QAEXPAVNodoActivo@@@Z) en Nodo.obj
+[EDD]Proyecto1_201807420.obj : error LNK2005: ya se definió "public: class NodoActivo * __thiscall ArbolA::Insertar(class NodoActivo *,class NodoActivo *)" (?Insertar@ArbolA@@QAEPAVNodoActivo@@PAV2@0@Z) en Nodo.obj
+[EDD]Proyecto1_201807420.obj : error LNK2005: ya se definió "public: int __thiscall ArbolA::Mayor(int,int)" (?Mayor@ArbolA@@QAEHHH@Z) en Nodo.obj
+[EDD]Proyecto1_201807420.obj : error LNK2005: ya se definió "public: class NodoActivo * __thiscall ArbolA::buscar(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class NodoActivo *)" (?buscar@ArbolA@@QAEPAVNodoActivo@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAV2@@Z) en Nodo.obj
+[EDD]Proyecto1_201807420.obj : error LNK2005: ya se definió "public: int __thiscall ArbolA::obtenerFE(class NodoActivo *)" (?obtenerFE@ArbolA@@QAEHPAVNodoActivo@@@Z) en Nodo.obj
+[EDD]Proyecto1_201807420.obj : error LNK2005: ya se definió "public: class NodoActivo * __thiscall ArbolA::rotaDer(class NodoActivo *)" (?rotaDer@ArbolA@@QAEPAVNodoActivo@@PAV2@@Z) en Nodo.obj
+[EDD]Proyecto1_201807420.obj : error LNK2005: ya se definió "public: class NodoActivo * __thiscall ArbolA::rotaDobleDer(class NodoActivo *)" (?rotaDobleDer@ArbolA@@QAEPAVNodoActivo@@PAV2@@Z) en Nodo.obj
+[EDD]Proyecto1_201807420.obj : error LNK2005: ya se definió "public: class NodoActivo * __thiscall ArbolA::rotaDobleIzq(class NodoActivo *)" (?rotaDobleIzq@ArbolA@@QAEPAVNodoActivo@@PAV2@@Z) en Nodo.obj
+[EDD]Proyecto1_201807420.obj : error LNK2005: ya se definió "public: class NodoActivo * __thiscall ArbolA::rotaizq(class NodoActivo *)" (?rotaizq@ArbolA@@QAEPAVNodoActivo@@PAV2@@Z) en Nodo.obj
+C:\Users\Co\Documents\GitHub\Proyecto1_201807420\[EDD]Proyecto1_201807420\Debug\[EDD]Proyecto1_201807420.exe : fatal error LNK1169: se encontraron uno o más símbolos definidos simultáneamente

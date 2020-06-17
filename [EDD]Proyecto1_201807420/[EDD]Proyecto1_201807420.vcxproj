@@ -152,6 +152,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Activo.h" />
+    <ClInclude Include="ArbolAVLAc.h" />
+    <ClInclude Include="ListaDCircular.h" />
     <ClInclude Include="Matriz.h" />
     <ClInclude Include="Nodo.h" />
     <ClInclude Include="Transaccion.h" />

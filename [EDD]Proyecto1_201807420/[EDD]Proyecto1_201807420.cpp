@@ -4,8 +4,34 @@
 #include <iostream>
 #include"Nodo.h"
 #include "Matriz.h"
+#include<time.h>
+#include<stdlib.h>
+#include<string.h>
+#include<conio.h>
 using namespace std;
 int idUsuarios = 1;
+
+string GenerarAlfanumerico() {
+    char strrnd[15];
+    int a, e = 0;
+    for (int i = 0; i <= 14; i++)
+    {
+        if (i <= 0) {
+            strrnd[i] = 48 + rand() % (58 - 48);
+        }
+        else {
+            a = 1 + rand() % (3 - 1);
+            if (a == 2) {
+                strrnd[i] = 48 + rand() % (58 - 48);
+            }
+            else if (a == 1) {
+                strrnd[i] = 97 + rand() % (123 - 97);
+            }
+        }
+    }
+    return strrnd;
+}
+
 Nodo* buscarCoordenadas(Nodo* cabeza, string empresa, string departamento) {
     while (cabeza != nullptr)
     {
@@ -116,11 +142,10 @@ void menuAdministrador(Nodo* cabeza, Matriz* matrizD) {
         }
     } while (op!=8);
 }
-void menuUsuario(Nodo* cabezera,string nuser,string departamento,string empresa,Matriz* matrizD) {
+void menuUsuario(Nodo* cabezera,string nuser,string departamento,string empresa,Nodo* nodoUser) {
     int op;
     do {
         op = 0;
-        system("cls");
         cout << "%%%%%%%%%%%%%%% "<<nuser<<" %%%%%%%%%%%%%%%%%%" << endl;
         cout << "1. Agregar Activo" << endl;
         cout << "2. Eliminar Activo" << endl;
@@ -146,6 +171,7 @@ void Login(Nodo* cabeza, string usuario, string contra, string empresa, string d
     Nodo* punto = buscarCoordenadas(cabeza, empresa, departamento);
     if (usuario=="admin" && contra=="admin")
     {
+        system("cls");
         menuAdministrador(cabeza,matrizD);
         return;
     }
@@ -154,7 +180,8 @@ void Login(Nodo* cabeza, string usuario, string contra, string empresa, string d
         if (punto->nombre==usuario && punto->pass==contra)
         {
             cout << "el usuario existe bienvenido";
-            menuUsuario(cabeza, usuario, departamento, empresa,matrizD);
+            system("cls");
+            menuUsuario(cabeza, usuario, departamento, empresa,punto);
             return;
         }
         else
@@ -171,7 +198,8 @@ void Login(Nodo* cabeza, string usuario, string contra, string empresa, string d
             if (aux->nombre == usuario && aux->pass == contra)
             {
                 cout << "el usuario existe bienvenido";
-                menuUsuario(cabeza, usuario, departamento, empresa,matrizD);
+                system("cls");
+                menuUsuario(cabeza, usuario, departamento, empresa,aux);
                 return;
             }
             aux = aux->back;
@@ -183,7 +211,7 @@ void Login(Nodo* cabeza, string usuario, string contra, string empresa, string d
 
 int main()
 {
-    
+    srand(time(NULL));
     int op;
     string seguir;
     bool dp, inc;
