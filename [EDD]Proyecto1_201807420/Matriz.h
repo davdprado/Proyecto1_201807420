@@ -1,13 +1,14 @@
 #pragma once
 #include "Nodo.h"
 #include<iostream>
+#include<string>
 using namespace std;
 class Matriz
 {
 public:
 	Nodo* cabezera;
 	Matriz(){
-		cabezera = new Nodo("admin", -1,"admin");
+		cabezera = new Nodo("admin", 0,"admin");
 	}
 	void InsertarElemento(string usuario, int numero,string passW, string empresa, string departamento);
 	//metodos para ingresar cabeceras
@@ -19,13 +20,14 @@ public:
 
 	bool verificarEmpresa(string, Nodo*,Nodo*);
 	bool verificarDepartamento(string, Nodo*, Nodo*);
+	string Graficar(Nodo*);
 };
 
 
 
 Nodo* Matriz::crearEmpr(string empresa) {
 	Nodo* emp;
-	emp = new Nodo(empresa, -1,"");
+	emp = new Nodo(empresa, 0,"");
 
 	Nodo* aux = cabezera;
 	while (aux->down != nullptr)
@@ -36,7 +38,7 @@ Nodo* Matriz::crearEmpr(string empresa) {
 }
 Nodo* Matriz::crearDep(string departamento) {
 	Nodo* depa;
-	depa = new Nodo(departamento, -1,"");
+	depa = new Nodo(departamento, 0,"");
 	Nodo* aux = cabezera;
 	while (aux->nextt != nullptr)
 	{
@@ -241,4 +243,40 @@ bool Matriz::verificarDepartamento(string empresa, Nodo* inicio, Nodo* usr) {
 	return false;
 }
 
- 
+string Matriz::Graficar(Nodo* Inicio) {
+	string grafica = "";
+	Nodo* copia=Inicio;
+	while (Inicio != nullptr)
+	{
+		Nodo* x = Inicio;
+		while (x != nullptr) {
+			grafica += x->nombre + to_string(x->id) + "[label=" + '"' + "Id: " + to_string(x->id) + "Usuario: " + x->nombre + '"' + "]\n";
+			x = x->nextt;
+		}
+		Inicio = Inicio->down;
+	}
+	//hacer las uniones
+	while (copia != nullptr)
+	{
+		Nodo* xy = copia;
+		while (xy != nullptr) {
+			if (xy->nextt != nullptr) {
+				grafica += xy->nombre + to_string(xy->id) + "->" + xy->nextt->nombre + to_string(xy->nextt->id)+"\n";
+				if (xy->previous != nullptr) {
+					grafica += xy->nombre + to_string(xy->id) + "->" + xy->previous->nombre + to_string(xy->previous->id) + "\n";
+				}
+			}
+			if (xy->down != nullptr) {
+				grafica += xy->nombre + to_string(xy->id) + "->" + xy->down->nombre + to_string(xy->down->id) + "\n";
+				if (xy->up != nullptr) {
+					grafica += xy->nombre + to_string(xy->id) + "->" + xy->up->nombre + to_string(xy->up->id) + "\n";
+				}
+			}
+			xy = xy->nextt;
+		}
+		
+		copia = copia->down;
+	}
+	return grafica;
+ }
+

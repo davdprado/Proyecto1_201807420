@@ -1,0 +1,11 @@
+digraph G{
+andres96hqmgpv410yi67[label="ID Transaccion: 96hqmgpv410yi67 ID Activo: 4to3c146j85k4ct Usuario: andresfecha: tocohoy"]
+andres96hqmgpv410yi67->andres91k6418kb659621
+andres96hqmgpv410yi67->andres75f9736z43dx5wn
+andres75f9736z43dx5wn[label="ID Transaccion: 75f9736z43dx5wn ID Activo: 7m49d72hi78a14g Usuario: andresfecha: tocohoy"]
+andres75f9736z43dx5wn->andres96hqmgpv410yi67
+andres75f9736z43dx5wn->andres91k6418kb659621
+andres91k6418kb659621[label="ID Transaccion: 91k6418kb659621 ID Activo: 9s6h89y3q0w969n Usuario: andresfecha: tocohoy"]
+andres91k6418kb659621->andres75f9736z43dx5wn
+andres91k6418kb659621->andres96hqmgpv410yi67
+}

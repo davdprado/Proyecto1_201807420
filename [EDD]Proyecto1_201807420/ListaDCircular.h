@@ -1,6 +1,8 @@
 #include<iostream>
 #include<string.h>
 #include"Transaccion.h"
+#include<fstream>
+#include <chrono>
 using namespace std;
 
 class ListaCircular
@@ -13,6 +15,7 @@ public:
 	void InsertarInicio(string i, string idA, string usu, string depa, string emp, string fec, int ti);
 	void InsertarFinal(string i, string idA, string usu, string depa, string emp, string fec, int ti);
 	void MostrarLista();
+	void Graficar();
 };
 
 bool ListaCircular::Vacia() {
@@ -60,6 +63,8 @@ void  ListaCircular::InsertarFinal(string i, string idA, string usu, string depa
 		aux->siguiente = nuevo;
 		nuevo->anterior = aux;
 		fin = nuevo;
+		fin->siguiente = inicio;
+		inicio->anterior = fin;
 		sizelist++;
 
 	}
@@ -70,12 +75,42 @@ void ListaCircular::MostrarLista() {
 		NodoLista* aux = inicio;
 		for (int i = 0; i < sizelist; i++)
 		{
-			cout << aux->idTr << endl;
+			cout<<"idTr: "<<aux->idTr<<" idA: "<<aux->idAc<<" usuario: "<<aux->usuario<<" fecha: "<<aux->fecha << " ;" << endl;
 			aux = aux->siguiente;
 		}
 	}
 	else
 	{
 		cout << "esta vacia " << endl;
+	}
+}
+
+void ListaCircular::Graficar() {
+	if (!Vacia()) {
+		NodoLista* aux = inicio;
+		fstream archivo;
+		archivo.open("grafica.dot", ios::out);
+		if (archivo.fail())
+		{
+			cout << "Error: no se pudo abrir el archivo";
+			return;
+		}
+		archivo << "digraph G{\n";
+		archivo << "rankdir=LR;\n";
+		for (int i = 0; i < sizelist; i++)
+		{
+			archivo << aux->usuario+aux->idTr+"[label="+'"'+"ID Transaccion: "+aux->idTr+" ID Activo: "+ aux->idAc +" Usuario: "+ aux->usuario +"fecha: "+ aux->fecha +'"'+"]"<<endl;
+			archivo << aux->usuario + aux->idTr + "->" + aux->anterior->usuario + aux->anterior->idTr+"\n";
+			archivo << aux->usuario + aux->idTr + "->" + aux->siguiente->usuario + aux->siguiente->idTr+"\n";
+			aux = aux->siguiente;
+		}
+		archivo << "}";
+		archivo.close();
+		system("dot -Tjpg grafica.dot -o Grafica.jpg");
+	}
+	else
+	{
+		cout << "esta vacia " << endl;
+
 	}
 }

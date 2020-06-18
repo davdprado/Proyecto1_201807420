@@ -151,11 +151,11 @@
     <ClCompile Include="[EDD]Proyecto1_201807420.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Activo.h" />
-    <ClInclude Include="ArbolAVLAc.h" />
+    <ClInclude Include="Arbol2.h" />
     <ClInclude Include="ListaDCircular.h" />
     <ClInclude Include="Matriz.h" />
     <ClInclude Include="Nodo.h" />
+    <ClInclude Include="Nodo2.h" />
     <ClInclude Include="Transaccion.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
