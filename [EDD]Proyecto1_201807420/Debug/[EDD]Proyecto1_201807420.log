@@ -1,6 +1,8 @@
 ﻿  [EDD]Proyecto1_201807420.cpp
-C:\Users\Co\Documents\GitHub\Proyecto1_201807420\[EDD]Proyecto1_201807420\[EDD]Proyecto1_201807420.cpp(494,15): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
-C:\Users\Co\Documents\GitHub\Proyecto1_201807420\[EDD]Proyecto1_201807420\[EDD]Proyecto1_201807420.cpp(495,9): warning C4101: 'op': variable local sin referencia
+C:\Users\Co\Documents\GitHub\Proyecto1_201807420\[EDD]Proyecto1_201807420\[EDD]Proyecto1_201807420.cpp(418,25): warning C4101: 'ope': variable local sin referencia
+C:\Users\Co\Documents\GitHub\Proyecto1_201807420\[EDD]Proyecto1_201807420\[EDD]Proyecto1_201807420.cpp(457,29): warning C4101: 'ope': variable local sin referencia
+C:\Users\Co\Documents\GitHub\Proyecto1_201807420\[EDD]Proyecto1_201807420\[EDD]Proyecto1_201807420.cpp(641,15): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
+C:\Users\Co\Documents\GitHub\Proyecto1_201807420\[EDD]Proyecto1_201807420\[EDD]Proyecto1_201807420.cpp(642,9): warning C4101: 'op': variable local sin referencia
 C:\Users\Co\Documents\GitHub\Proyecto1_201807420\[EDD]Proyecto1_201807420\[EDD]Proyecto1_201807420.cpp(54): warning C4715: 'buscarActivo': no todas las rutas de acceso de control devuelven un valor
 C:\Users\Co\Documents\GitHub\Proyecto1_201807420\[EDD]Proyecto1_201807420\[EDD]Proyecto1_201807420.cpp(133): warning C4715: 'buscarCoordenadas': no todas las rutas de acceso de control devuelven un valor
 C:\Users\Co\Documents\GitHub\Proyecto1_201807420\[EDD]Proyecto1_201807420\Arbol2.h(30): warning C4715: 'Arbol::buscar': no todas las rutas de acceso de control devuelven un valor

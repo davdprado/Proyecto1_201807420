@@ -163,57 +163,98 @@ bool ExisteCabezera(Nodo* cabeza,string cabe) {
 }
 
 
-
+string cosa(NodoArbol* nodo, NodoArbol* padre) {
+    if (nodo != nullptr) {
+        if (padre == nullptr)
+        {
+            cosa(nodo->izquierdo, nodo);
+            cosa(nodo->derecho, nodo);
+        }
+        else {
+            graficaU+=padre->nombreA+padre->idA + " -> " + nodo->nombreA+nodo->idA+"\n";
+            cosa(nodo->izquierdo, nodo);
+            cosa(nodo->derecho, nodo);
+        }
+    }
+    return graficaU;
+}
 string Grafi(NodoArbol* raiz) {
     
     if (raiz != nullptr)
     {
-        grafiarbol += Grafi(raiz->izquierdo);  
-        grafiarbol += raiz->nombreA + raiz->idA + "[label=" + '"' + "ID: " + raiz->idA + " Nombre: " + raiz->nombreA + " descripcion: " + raiz->descripcion +" disponibilidad: "+esdisponible(raiz->disponibilidad)+ '"' + "]\n";
-        grafiarbol += Grafi(raiz->derecho);
+        Grafi(raiz->izquierdo);  
+        grafiarbol += raiz->nombreA + raiz->idA + "[label=" + '"' + "ID: " + raiz->idA+"\\n" + " Nombre: " + raiz->nombreA + "\\n" + " descripcion: " + raiz->descripcion + "\\n" +" disponibilidad: "+esdisponible(raiz->disponibilidad)+ '"' + "]\n";
+        Grafi(raiz->derecho);
     }
         
     return grafiarbol;
 }
+string arbolEmp(Nodo* Inicio, string de) {
 
-string arbolDepa(Nodo* Inicio, string de) {
     string grafica = "";
     while (Inicio != nullptr)
     {
-        if (Inicio->nombre == de)
+        if (Inicio->back != nullptr)
         {
-            while (Inicio != nullptr)
+            Nodo* Aux = Inicio;
+            while (Aux->back != nullptr)
             {
-                if (Inicio->back != nullptr)
-                {
-                    Nodo* Aux = Inicio;
-                    while (Aux->back != nullptr)
-                    {
-                        if (Aux->arbol != nullptr) {
-                            grafica += Aux->nombre + to_string(Aux->id) + "[label=" + '"' + " Nombre: " + Aux->nombre +'"' + "]\n";
-                            grafica += Grafi(Aux->arbol->raiz);
-                            grafica += Aux->nombre + to_string(Aux->id) + "->" + Aux->arbol->raiz->nombreA + Aux->arbol->raiz->idA + "]\n";
-                            graficaU = "";
-                        }
-                        Aux = Aux->back;
-                    }
+                if (Aux->arbol->raiz != nullptr) {
+                    grafica += Aux->nombre + to_string(Aux->id) + "[label=" + '"' + " Nombre: " + Aux->nombre + '"' + "]\n";
+                    grafica += Grafi(Aux->arbol->raiz);
+                    grafica += Aux->nombre + to_string(Aux->id) + "->" + Aux->arbol->raiz->nombreA + Aux->arbol->raiz->idA + "\n";
+                    grafica += cosa(Aux->arbol->raiz, nullptr);
                 }
-                else
-                {
-                    if (Inicio->arbol->raiz != nullptr) {
-                        grafica += Inicio->nombre + to_string(Inicio->id) + "[label=" + '"' + " Nombre: " + Inicio->nombre + '"' + "]\n";
-                        grafica += Grafi(Inicio->arbol->raiz);
-                        grafica += Inicio->nombre + to_string(Inicio->id) + "->" + Inicio->arbol->raiz->nombreA + Inicio->arbol->raiz->idA + "\n";
-                        graficaU = "";
-
-                    }  
-
-                }
-                Inicio = Inicio->down;
+                Aux = Aux->back;
             }
-            break;
+        }
+        else
+        {
+            if (Inicio->arbol->raiz != nullptr) {
+                grafica += Inicio->nombre + to_string(Inicio->id) + "[label=" + '"' + " Nombre: " + Inicio->nombre + '"' + "]\n";
+                grafica += Grafi(Inicio->arbol->raiz);
+                grafica += Inicio->nombre + to_string(Inicio->id) + "->" + Inicio->arbol->raiz->nombreA + Inicio->arbol->raiz->idA + "\n";
+                grafica += cosa(Inicio->arbol->raiz, nullptr);
+
+            }
+
         }
         Inicio = Inicio->nextt;
+    }
+    return grafica;
+}
+
+string arbolDepa(Nodo* Inicio, string de) {
+    
+    string grafica = "";
+    while (Inicio != nullptr)
+    {
+        if (Inicio->back != nullptr)
+        {
+            Nodo* Aux = Inicio;
+            while (Aux->back != nullptr)
+            {
+                if (Aux->arbol->raiz != nullptr) {
+                    grafica += Aux->nombre + to_string(Aux->id) + "[label=" + '"' + " Nombre: " + Aux->nombre + '"' + "]\n";
+                    grafica += Grafi(Aux->arbol->raiz);
+                    grafica += Aux->nombre + to_string(Aux->id) + "->" + Aux->arbol->raiz->nombreA + Aux->arbol->raiz->idA + "\n";
+                    grafica += cosa(Aux->arbol->raiz, nullptr);
+                }
+                Aux = Aux->back;
+            }
+        }
+        else
+        {
+            if (Inicio->arbol->raiz != nullptr) {
+                grafica += Inicio->nombre + to_string(Inicio->id) + "[label=" + '"' + " Nombre: " + Inicio->nombre + '"' + "]\n";
+                grafica += Grafi(Inicio->arbol->raiz);
+                grafica += Inicio->nombre + to_string(Inicio->id) + "->" + Inicio->arbol->raiz->nombreA + Inicio->arbol->raiz->idA + "\n";
+                grafica += cosa(Inicio->arbol->raiz, nullptr);
+
+            }
+
+        }
+        Inicio = Inicio->down;
     }
     return grafica;
 }
@@ -221,7 +262,28 @@ string arbolDepa(Nodo* Inicio, string de) {
 void GenerarGrafica2(Matriz* mat,Nodo*cabeza, string departamento) {
     grafiarbol = "";
     string emp = "digraph G{\n";
-    emp += arbolDepa(cabeza, departamento);
+    emp += departamento + "[label=" + '"' + departamento + '"' + "]";
+    Nodo* cabeceraxd = mat->buscarDep(departamento, cabeza);
+    emp += arbolDepa(cabeceraxd, departamento);
+    emp += "}";
+    ofstream archivo;
+    archivo.open("grafica.dot", ios::out);
+    if (archivo.fail())
+    {
+        cout << "Error: no se pudo abrir el archivo";
+        return;
+    }
+    archivo << emp;
+    archivo.close();
+    system("dot -Tjpg grafica.dot -o Grafica.jpg");
+    grafiarbol = "";
+}
+void GenerarGrafica3(Matriz* mat, Nodo* cabeza, string empresa) {
+    grafiarbol = "";
+    string emp = "digraph G{\n";
+    emp += empresa + "[label=" + '"' + empresa + '"' + "]";
+    Nodo* cabeceraxd = mat->buscarEmp(empresa, cabeza);
+    emp += arbolDepa(cabeceraxd, empresa);
     emp += "}";
     ofstream archivo;
     archivo.open("grafica.dot", ios::out);
@@ -239,6 +301,7 @@ void GenerarGrafica2(Matriz* mat,Nodo*cabeza, string departamento) {
 
 void GenerarGrafica1(Matriz* mat,Nodo* cabeza) {
     string emp = "digraph G{\n";
+    emp += "node [shape=box]\n";
     emp += mat->Graficar(cabeza);
     emp += "}";
     ofstream archivo;
@@ -330,7 +393,7 @@ void menuAdministrador(Nodo* cabeza, Matriz* matrizD) {
             cout << "##################### Reporte por Empresa ########################" << endl;
             cout << "Ingrese Empresa: ";
             cin >> depart;
-            GenerarGrafica2(matrizD, cabeza, depart);
+            GenerarGrafica3(matrizD, cabeza, depart);
             break;
         case 5:
             system("cls");

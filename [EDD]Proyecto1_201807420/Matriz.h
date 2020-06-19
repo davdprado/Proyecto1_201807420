@@ -246,14 +246,34 @@ bool Matriz::verificarDepartamento(string empresa, Nodo* inicio, Nodo* usr) {
 string Matriz::Graficar(Nodo* Inicio) {
 	string grafica = "";
 	Nodo* copia=Inicio;
+	Nodo* otro = Inicio;
+	int grupo = 1;
 	while (Inicio != nullptr)
 	{
 		Nodo* x = Inicio;
 		while (x != nullptr) {
-			grafica += x->nombre + to_string(x->id) + "[label=" + '"' + "Id: " + to_string(x->id) + "Usuario: " + x->nombre + '"' + "]\n";
-			x = x->nextt;
+			if (x->arbol->raiz!=nullptr)
+			{
+				grafica += x->nombre + to_string(x->id) + "[label=" + '"' + "Id: " + to_string(x->id) + "\\n" + "Usuario: " + x->nombre + '"' + ",style = filled, fillcolor = lightskyblue , group=" + to_string(grupo) + "];\n";
+			}
+			else {
+				grafica += x->nombre + to_string(x->id) + "[label=" + '"' + "Id: " + to_string(x->id) + "\\n" + "Usuario: " + x->nombre + '"' + " , group=" + to_string(grupo) + "];\n";
+			}
+			x = x->down;
 		}
-		Inicio = Inicio->down;
+		Inicio = Inicio->nextt;
+		grupo++;
+	}//rank
+	while (otro != nullptr)
+	{
+		Nodo* b = otro;
+		grafica += "{ rank = same; ";
+		while (b != nullptr) {
+			grafica += b->nombre + to_string(b->id)+"; ";
+			b = b->down;
+		}
+		otro = otro->nextt;
+		grafica += "}\n";
 	}
 	//hacer las uniones
 	while (copia != nullptr)

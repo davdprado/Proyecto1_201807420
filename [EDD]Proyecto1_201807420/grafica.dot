@@ -1,11 +1,58 @@
 digraph G{
-andres96hqmgpv410yi67[label="ID Transaccion: 96hqmgpv410yi67 ID Activo: 4to3c146j85k4ct Usuario: andresfecha: tocohoy"]
-andres96hqmgpv410yi67->andres91k6418kb659621
-andres96hqmgpv410yi67->andres75f9736z43dx5wn
-andres75f9736z43dx5wn[label="ID Transaccion: 75f9736z43dx5wn ID Activo: 7m49d72hi78a14g Usuario: andresfecha: tocohoy"]
-andres75f9736z43dx5wn->andres96hqmgpv410yi67
-andres75f9736z43dx5wn->andres91k6418kb659621
-andres91k6418kb659621[label="ID Transaccion: 91k6418kb659621 ID Activo: 9s6h89y3q0w969n Usuario: andresfecha: tocohoy"]
-andres91k6418kb659621->andres75f9736z43dx5wn
-andres91k6418kb659621->andres96hqmgpv410yi67
+node [shape=box]
+admin0[label="Id: 0\nUsuario: admin" , group=1];
+max0[label="Id: 0\nUsuario: max" , group=1];
+hp0[label="Id: 0\nUsuario: hp" , group=1];
+Safo0[label="Id: 0\nUsuario: Safo" , group=1];
+meicos0[label="Id: 0\nUsuario: meicos" , group=1];
+Guatemala0[label="Id: 0\nUsuario: Guatemala" , group=2];
+mario1[label="Id: 1\nUsuario: mario" , group=2];
+andres7[label="Id: 7\nUsuario: andres" , group=2];
+Peten0[label="Id: 0\nUsuario: Peten" , group=3];
+susan2[label="Id: 2\nUsuario: susan" , group=3];
+Zacapa0[label="Id: 0\nUsuario: Zacapa" , group=4];
+willy8[label="Id: 8\nUsuario: willy" , group=4];
+susel3[label="Id: 3\nUsuario: susel" , group=4];
+roxana4[label="Id: 4\nUsuario: roxana" , group=4];
+Huehue0[label="Id: 0\nUsuario: Huehue" , group=5];
+David10[label="Id: 10\nUsuario: David" , group=5];
+{ rank = same; admin0; max0; hp0; Safo0; meicos0; }
+{ rank = same; Guatemala0; mario1; andres7; }
+{ rank = same; Peten0; susan2; }
+{ rank = same; Zacapa0; willy8; susel3; roxana4; }
+{ rank = same; Huehue0; David10; }
+admin0->Guatemala0
+admin0->max0
+Guatemala0->Peten0
+Guatemala0->admin0
+Guatemala0->mario1
+Peten0->Zacapa0
+Peten0->Guatemala0
+Peten0->susan2
+Zacapa0->Huehue0
+Zacapa0->Peten0
+Zacapa0->willy8
+Huehue0->David10
+max0->mario1
+max0->hp0
+max0->admin0
+mario1->willy8
+mario1->max0
+mario1->andres7
+mario1->Guatemala0
+willy8->susel3
+willy8->Zacapa0
+hp0->andres7
+hp0->Safo0
+hp0->max0
+andres7->susan2
+andres7->hp0
+susan2->susel3
+susan2->andres7
+susel3->roxana4
+susel3->willy8
+Safo0->roxana4
+Safo0->meicos0
+Safo0->hp0
+meicos0->David10
 }

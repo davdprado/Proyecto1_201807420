@@ -99,7 +99,7 @@ void ListaCircular::Graficar() {
 		archivo << "rankdir=LR;\n";
 		for (int i = 0; i < sizelist; i++)
 		{
-			archivo << aux->usuario+aux->idTr+"[label="+'"'+"ID Transaccion: "+aux->idTr+" ID Activo: "+ aux->idAc +" Usuario: "+ aux->usuario +"fecha: "+ aux->fecha +'"'+"]"<<endl;
+			archivo << aux->usuario+aux->idTr+"[label="+'"'+"ID Transaccion: "+aux->idTr+"\\n"+" ID Activo: "+ aux->idAc + "\\n" + " Usuario: "+ aux->usuario + "\\n" + "fecha: "+ aux->fecha +'"'+"]"<<endl;
 			archivo << aux->usuario + aux->idTr + "->" + aux->anterior->usuario + aux->anterior->idTr+"\n";
 			archivo << aux->usuario + aux->idTr + "->" + aux->siguiente->usuario + aux->siguiente->idTr+"\n";
 			aux = aux->siguiente;
